@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+enum States {STATE_ONFLOOR, STATE_JUMP, STATE_RUN, STATE_LAND}
+var last_state
+var state
 
 @export var SPEED = 150
 @export var JUMP_VELOCITY = -500.00
@@ -11,15 +14,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity * delta 
+	else : state = States.STATE_ONFLOOR
 		
-	if velocity.x == 0 and is_on_floor() :
-		$AnimatedSprite2D.play("idle")	
+	if is_on_floor() and !$AnimatedSprite2D.is_playing() :
+		$AnimatedSprite2D.play("idle")
+		
 
 	
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -30,16 +32,26 @@ func _physics_process(delta):
 		$AnimatedSprite2D.set_flip_h(false)
 		if is_on_floor() :
 			$AnimatedSprite2D.play("run")
+			state = States.STATE_RUN
 	elif velocity.x < 0 :
 		$AnimatedSprite2D.set_flip_h(true)
 		if is_on_floor() :
 			$AnimatedSprite2D.play("run")
+			state = States.STATE_RUN
 		
-	# Handle Jump.
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		$AnimatedSprite2D.play("jump")
+		state = States.STATE_JUMP
 		
+	if last_state == States.STATE_JUMP and is_on_floor() :
+		$AnimatedSprite2D.play("land")
 	
+	
+	last_state = state
+	
+	print(state)
 
 	move_and_slide()
+	
+	

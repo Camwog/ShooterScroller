@@ -97,7 +97,6 @@ script = ExtResource("1_ec07q")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(82, 33)
-safe_margin = 0.5
 script = ExtResource("2_3edsc")
 metadata/_edit_group_ = true
 

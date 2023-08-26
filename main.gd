@@ -14,12 +14,12 @@ func _ready():
 	if current_level_scene != null:
 		level = current_level_scene.instantiate()
 	add_child(level)
-	
-	if test_mob_scene != null:
-		test_mob = test_mob_scene.instantiate()
+#
+#	if test_mob_scene != null:
+#		test_mob = test_mob_scene.instantiate()
 		
-	test_mob.set_position(Vector2(100,100))
-	add_child(test_mob)
+#	test_mob.set_position(Vector2(100,100))
+#	add_child(test_mob)
 	
 	
 	
