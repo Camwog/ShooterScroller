@@ -20,11 +20,14 @@ func _physics_process(delta):
 	if is_on_wall() :
 		heading *= -1
 		
-		scale.x =  heading
+		scale.x = -1
 		
 		velocity.x = speed * heading
 		
 		print("Heading : ", heading, "\n Scale.x: ", scale.x)
+		
+	
+		
 		
 	
 		
