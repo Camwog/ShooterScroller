@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwc6b15im8epy"]
+[gd_scene load_steps=17 format=3 uid="uid://dwc6b15im8epy"]
 
 [ext_resource type="Script" path="res://test_mob.gd" id="1_ec07q"]
 [ext_resource type="Script" path="res://TestMob.gd" id="2_3edsc"]
 [ext_resource type="Texture2D" uid="uid://b1os5j3jm0vbk" path="res://XenoGrunt/xeno-grunt-idle.png" id="3_7owh4"]
+[ext_resource type="Texture2D" uid="uid://d2mrt0teflcni" path="res://XenoGrunt/xeno-grunt-run.png" id="4_gh5ws"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_derf5"]
 radius = 5.0
@@ -16,6 +17,38 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("3_7owh4")
 region = Rect2(64, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1s4v"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t60be"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1odcd"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbh2m"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4qpy"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u2pu"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85bdp"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q54o3"]
+atlas = ExtResource("4_gh5ws")
+region = Rect2(448, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0chwc"]
 animations = [{
 "frames": [{
@@ -26,7 +59,36 @@ animations = [{
 "texture": SubResource("AtlasTexture_xj0md")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1s4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t60be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1odcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbh2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4qpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u2pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85bdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q54o3")
+}],
+"loop": true,
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -46,4 +108,5 @@ shape = SubResource("CapsuleShape2D_derf5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(-22, -55)
 sprite_frames = SubResource("SpriteFrames_0chwc")
+animation = &"run"
 centered = false

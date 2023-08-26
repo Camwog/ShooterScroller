@@ -24,14 +24,13 @@ func _physics_process(delta):
 		
 		velocity.x = speed * heading
 		
-		print("Heading : ", heading, "\n Scale.x: ", scale.x)
-		
+	if velocity.x > 0 and is_on_floor() :
+		$AnimatedSprite2D.play("run")
 	
-		
-		
 	
-		
 	
-	print("Heading : ", heading, "\n Scale.x: ", scale.x, "\n Velocity: ", velocity.x)
 	
 	move_and_slide()
+	
+	
+	pass
