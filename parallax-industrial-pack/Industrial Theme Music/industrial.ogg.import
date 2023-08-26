@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dq7dujubdrrub"
+path="res://.godot/imported/industrial.ogg-cb7f7614d6b93a6a5f6879d0087dbed0.oggvorbisstr"
+
+[deps]
+
+source_file="res://parallax-industrial-pack/Industrial Theme Music/industrial.ogg"
+dest_files=["res://.godot/imported/industrial.ogg-cb7f7614d6b93a6a5f6879d0087dbed0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
