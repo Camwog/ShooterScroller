@@ -42,8 +42,8 @@ func _physics_process(delta):
 	if $RayCast2D.get_collider()  != null :
 		if $RayCast2D.get_collider().name == "Player":
 			attack()
-			print("hit")
-	
+			
+		print($RayCast2D.get_collision_normal())
 	
 	
 	
