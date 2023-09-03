@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://vbyo8aya7830"]
+[gd_scene load_steps=52 format=3 uid="uid://vbyo8aya7830"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dlfp2"]
 [ext_resource type="PackedScene" uid="uid://bqlrdyek6gfo4" path="res://player.tscn" id="1_tih3e"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://07g51k4sk4gq" path="res://CharacterPack/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/run cycle 48x48.png" id="6_qj7yb"]
 [ext_resource type="Script" path="res://LevelSwitcher.gd" id="8_4casy"]
 [ext_resource type="Texture2D" uid="uid://bvi0e2cdkj64v" path="res://CharacterPack/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/player land 48x48.png" id="8_8eyig"]
+[ext_resource type="Texture2D" uid="uid://c2k3dk4uukedp" path="res://CharacterPack/Asset Packs 1-3 (final)/Asset Pack-V3/Basic Sword Attack 1/player sword atk 64x64.png" id="10_4iqve"]
 [ext_resource type="Script" path="res://Mob.gd" id="10_hhfuj"]
 [ext_resource type="PackedScene" uid="uid://dwc6b15im8epy" path="res://test_mob.tscn" id="11_ja4u8"]
 
@@ -133,6 +134,30 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("6_qj7yb")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq5ej"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gywa5"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv2lj"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq7kr"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgp5b"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3erpi"]
+atlas = ExtResource("10_4iqve")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ttdj7"]
 animations = [{
 "frames": [{
@@ -214,7 +239,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"land",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -244,6 +269,29 @@ animations = [{
 "loop": false,
 "name": &"run",
 "speed": 10.97
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq5ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gywa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv2lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq7kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgp5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3erpi")
+}],
+"loop": false,
+"name": &"sword_atk",
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txlw2"]
@@ -255,15 +303,18 @@ current_level_scene = ExtResource("2_tsm5h")
 player_scene = ExtResource("1_tih3e")
 test_mob_scene = ExtResource("11_ja4u8")
 
-[node name="Player" parent="." instance=ExtResource("1_tih3e")]
+[node name="Player" parent="." groups=["Characters"] instance=ExtResource("1_tih3e")]
 position = Vector2(83, 503)
 script = ExtResource("2_1xglu")
-SPEED = 300
+SPEED = 200
+JUMP_VELOCITY = -300.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_ttdj7")
-animation = &"idle"
+animation = &"sword_atk"
+frame = 5
+frame_progress = 1.0
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -275,6 +326,10 @@ shape = SubResource("CapsuleShape2D_txlw2")
 zoom = Vector2(1.91, 1.91)
 process_callback = 0
 
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2(-1, 0)
+target_position = Vector2(32, 0)
+
 [node name="LevelSwitcher" type="Node" parent="."]
 script = ExtResource("8_4casy")
 
@@ -282,8 +337,8 @@ script = ExtResource("8_4casy")
 
 [node name="Level 2" parent="LevelSwitcher" instance=ExtResource("2_tsm5h")]
 
-[node name="Mob" type="Node2D" parent="."]
+[node name="Mob" type="Node2D" parent="." groups=["Characters"]]
 script = ExtResource("10_hhfuj")
 
-[node name="TestMob" parent="Mob" instance=ExtResource("11_ja4u8")]
+[node name="TestMob" parent="Mob" groups=["Characters"] instance=ExtResource("11_ja4u8")]
 position = Vector2(-144, 123)

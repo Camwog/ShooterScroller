@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dwc6b15im8epy"]
+[gd_scene load_steps=28 format=3 uid="uid://dwc6b15im8epy"]
 
 [ext_resource type="Script" path="res://test_mob.gd" id="1_ec07q"]
 [ext_resource type="Script" path="res://TestMob.gd" id="2_3edsc"]
@@ -117,7 +117,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,10 +160,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ugh63"]
+
 [node name="TestMob" type="Node2D"]
 script = ExtResource("1_ec07q")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Characters"]]
 position = Vector2(82, 33)
 safe_margin = 1.0
 script = ExtResource("2_3edsc")
@@ -183,3 +185,20 @@ centered = false
 target_position = Vector2(20, 0)
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -18.0
+offset_right = 13.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+value = 5.0
+nine_patch_stretch = true
+texture_progress = SubResource("PlaceholderTexture2D_ugh63")

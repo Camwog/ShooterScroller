@@ -457,7 +457,10 @@ texture = ExtResource("8_go1c0")
 region_rect = Rect2(0, 0, 1158, 648)
 
 [node name="TestMob" parent="." instance=ExtResource("8_o3dtd")]
-position = Vector2(948, 135)
+position = Vector2(258, 449)
 
 [node name="TestMob2" parent="." instance=ExtResource("8_o3dtd")]
-position = Vector2(667, 225)
+position = Vector2(185, 441)
+
+[node name="TestMob3" parent="." instance=ExtResource("8_o3dtd")]
+position = Vector2(480, 450)
