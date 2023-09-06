@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://mca4xhdyfg12"]
+[gd_scene load_steps=12 format=3 uid="uid://mca4xhdyfg12"]
 
+[ext_resource type="Script" path="res://level_2.gd" id="1_v4qew"]
 [ext_resource type="Texture2D" uid="uid://b8a1eqb6tiatr" path="res://5. Industrial Tileset - Free/1_Industrial_Tileset_1.png" id="2_qui0u"]
 [ext_resource type="Script" path="res://TileMapOnLoad.gd" id="3_kknhi"]
 [ext_resource type="Script" path="res://ParallaxBackgroundSettings.gd" id="4_l7rcc"]
@@ -402,6 +403,8 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_gal3j")
 
 [node name="Level 2" type="Node"]
+script = ExtResource("1_v4qew")
+test_mob_scene = ExtResource("8_o3dtd")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_63ybe")
@@ -456,11 +459,12 @@ scale = Vector2(1.08732, 1.35691)
 texture = ExtResource("8_go1c0")
 region_rect = Rect2(0, 0, 1158, 648)
 
-[node name="TestMob" parent="." instance=ExtResource("8_o3dtd")]
-position = Vector2(258, 449)
+[node name="SpawnPoints" type="Node" parent="."]
 
-[node name="TestMob2" parent="." instance=ExtResource("8_o3dtd")]
-position = Vector2(185, 441)
+[node name="Marker1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(179, 472)
+gizmo_extents = 24.1
 
-[node name="TestMob3" parent="." instance=ExtResource("8_o3dtd")]
-position = Vector2(480, 450)
+[node name="Marker2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(483, 483)
+gizmo_extents = 32.0

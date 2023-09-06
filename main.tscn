@@ -294,8 +294,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txlw2"]
-height = 28.9855
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vthbu"]
+size = Vector2(20, 28.0193)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dlfp2")
@@ -318,9 +318,9 @@ frame_progress = 1.0
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 1)
+position = Vector2(-1, 1.5)
 scale = Vector2(1.21, 1.035)
-shape = SubResource("CapsuleShape2D_txlw2")
+shape = SubResource("RectangleShape2D_vthbu")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.91, 1.91)

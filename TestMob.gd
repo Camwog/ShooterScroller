@@ -9,6 +9,7 @@ var state
 var last_state
 var wall_counter = 0
 
+
 var health = 5
 
 const speed = 75.0
@@ -30,7 +31,6 @@ func attack() :
 	var current_frame = $AnimatedSprite2D.get_frame()
 	if (current_frame > 4 and current_frame < 6 and $RayCast2D.get_collider().name == "Player") :
 		$RayCast2D.get_collider().on_hit(1)
-		print("Signaled attack")
 	await get_tree().create_timer(0.5).timeout
 	state = States.RUN 
 	
@@ -42,9 +42,13 @@ func flip_character_h():
 	velocity.x = speed * heading
 
 func _ready():
+	
+	
+		
 	add_to_group("Characters")
 	$TextureProgressBar.max_value = health
 	$TextureProgressBar.value = health
+	
 
 func _physics_process(delta):
 	
@@ -68,8 +72,21 @@ func _physics_process(delta):
 			await attack()
 		else : flip_character_h()
 		
+	if $RayCast2D2.get_collider() == null : 
+		flip_character_h()
 	
 	move_and_slide()
 	
 	last_state = state
 	pass
+
+func init_heading(new_heading) :
+	heading = new_heading
+	if new_heading == -1 :
+		scale.x = -1
+
+func set_heading(new_heading) :
+	heading = new_heading
+
+func get_heading() :
+	return heading
